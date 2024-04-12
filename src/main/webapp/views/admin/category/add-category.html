@@ -1,0 +1,49 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:insert="admin/layouts/head.html"></th:block>
+<body class="hold-transition skin-blue sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+    <th:block th:insert="admin/layouts/header.html"></th:block>
+    <!-- Left side column. contains the sidebar -->
+    <th:block th:insert="admin/layouts/sidebar.html"></th:block>
+    <!-- =============================================== -->
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+
+        <div class="box __web-inspector-hide-shortcut__" style="width:70%; margin-left:200px">
+
+
+            <div class="box box-info">
+                <div class="box-header with-border" style="margin-left: 20px">
+                    <h3 class="box-title">Thêm mới danh mục</h3>
+                </div>
+                <form style="margin: 20px" th:action="@{/admin/add-category}" method="post" th:object="${category}">
+                    <div class="form-group" >
+                        <label for="categoryName">NameCategory</label>
+                        <input type="text" class="form-control" id="categoryName" name="categoryName">
+                        <small th:if="${#fields.hasErrors('categoryName')}" th:errors="*{categoryName}" class="form-text text-danger"></small>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="status" id="language1" value="1" />
+                            <label class="form-check-label">Open</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="status" id="language2" value="0" />
+                            <label class="form-check-label">Close</label>
+                        </div>
+                        <small th:if="${#fields.hasErrors('status')}" th:errors="*{status}" class="form-text text-danger"></small>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="margin-bottom: 20px">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <th:block th:insert="admin/layouts/footer.html"></th:block>
+</div>
+
+<th:block th:insert="admin/layouts/script.html"></th:block>
+</body>
+</html>
